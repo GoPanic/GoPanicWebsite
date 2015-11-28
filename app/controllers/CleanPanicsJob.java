@@ -6,6 +6,8 @@ import play.Play;
 import play.jobs.Every;
 import play.jobs.Job;
 
+import java.util.Iterator;
+
 /**
  * @author Michael Ruf
  * @since 2015-11-28
@@ -14,6 +16,7 @@ import play.jobs.Job;
 @SuppressWarnings("unused")
 public class CleanPanicsJob extends Job {
 
+    @SuppressWarnings("ForLoopReplaceableByForEach") // due to ConcurrentModificationException
     @Override
     public void doJob() throws Exception {
         super.doJob();
@@ -21,9 +24,10 @@ public class CleanPanicsJob extends Job {
         long timeLimit = Long.parseLong(Play.configuration.getProperty("panic.ttl"));
         Logger.debug("CleanPanicsJob: Start for time limit: " + timeLimit);
 
-        for (Panic panic : Application.panics) {
+        for (Iterator<Panic> iterator = Application.panics.iterator(); iterator.hasNext(); ) {
+            Panic panic = iterator.next();
             if (Panic.getPanicTime() - panic.getTime() > timeLimit) {
-                Application.panics.remove(panic);
+                iterator.remove();
             }
         }
     }
