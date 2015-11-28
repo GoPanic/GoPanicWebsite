@@ -1,4 +1,18 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-#{welcome /}
+<script language="javascript">
+function loadData() {
+    $.getJSON('@{Application.getData}', function(data) {
+        $('#count').text(data);
+    });
+}
+
+$(document).ready(function() {
+    loadData();
+    setInterval(function() { loadData(); }, 1000);
+});
+</script>
+
+<div id="count"></div>
+<a href="@{Application.submit}">Submit</a>
