@@ -14,8 +14,6 @@
 /eclipse
 
 # Ignore Play! working directory
-/conf/application.conf
-/conf/swagger.yml
 /data
 /dist
 /lib
