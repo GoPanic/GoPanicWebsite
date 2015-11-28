@@ -16,7 +16,6 @@ import java.util.Iterator;
 @SuppressWarnings("unused")
 public class CleanPanicsJob extends Job {
 
-    @SuppressWarnings("ForLoopReplaceableByForEach") // due to ConcurrentModificationException
     @Override
     public void doJob() throws Exception {
         super.doJob();
