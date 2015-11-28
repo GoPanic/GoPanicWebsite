@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Application extends Controller {
 
-    public static List<Panic> panics = new ArrayList<>();
+    public static List<Panic> panics = new ArrayList<Panic>();
 
     public static void index() {
         render();
