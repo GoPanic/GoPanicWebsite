@@ -8,6 +8,7 @@
 *.eml
 /.idea
 .eclipse
+.settings
 .cache
 /bin
 /out
