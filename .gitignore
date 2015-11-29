@@ -9,6 +9,8 @@
 /.idea
 .eclipse
 .settings
+.classpath
+.project
 .cache
 /bin
 /out
